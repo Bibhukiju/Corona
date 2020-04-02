@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:lastcorona/UI/myths.dart';
+import 'package:lastcorona/UI/world.dart';
 import 'package:lastcorona/UI/nepal.dart';
 
-void main()=>runApp(Home());
+import 'UI/world.dart';
 
-class Home extends StatelessWidget {
+void main()=>runApp(MyApp());
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,7 +16,9 @@ class Home extends StatelessWidget {
       routes:
       {
         '/':(context)=>DashBoard(),
-        'nepal':(context)=>Nepal()
+        'nepal':(context)=>Nepal(),
+        'world':(context)=>World(),
+        'myth buster':(context)=>Myths()
       },
     );
   }
@@ -29,9 +35,9 @@ class _DashBoardState extends State<DashBoard> {
         alignment: Alignment.center,
         height: MediaQuery.of(context).size.height * .23,
         width: MediaQuery.of(context).size.width * .47,
-        child: FlatButton(
-        onPressed: (){print("hello");
-        Navigator.pushNamed(context, 'nepal');
+        child: GestureDetector(
+        onTap: (){print("hello");
+        Navigator.pushNamed(context, header.toLowerCase());
         },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -43,7 +49,19 @@ class _DashBoardState extends State<DashBoard> {
                 Text(header)
               ],
             ),
-          ),   
+          ),  
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [BoxShadow(
+            color: Colors.grey[400],
+            offset: Offset(-4,-4),
+            blurRadius: 10
+            )
+            ],
+            borderRadius: BorderRadius.circular(20)
+            
+          ),
+
       );
 
   @override
@@ -73,7 +91,7 @@ class _DashBoardState extends State<DashBoard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    myContains('HelpLine', "https://www.safehelpline.org/sites/default/files/inline-images/SHL_icon_buttons-telephonehelpline_V2.jpg"),
+                    myContains('HelpLine', "https://th.bing.com/th/id/OIP.VGco4o8cKTs-4_5AbRccSQHaHa?w=191&h=184&c=7&o=5&dpr=1.25&pid=1.7"),
                     myContains("Myth Buster", "https://th.bing.com/th?id=OIP.h4pt0LdLbujLijQ1TR2_yQHaFj&pid=Api&rs=1"),
                   ],
                 ),
