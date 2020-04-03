@@ -1,4 +1,4 @@
-# lastcorona
+# Corona App
 
 A new Flutter project.
 
