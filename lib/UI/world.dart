@@ -33,11 +33,13 @@ class _WorldState extends State<World> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
-          title: Text("World data"),
+          title: Text("World data",
+          style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.white,
+          centerTitle: true,
         ),
         body: Container(
           child: FutureBuilder(
@@ -60,24 +62,41 @@ class _WorldState extends State<World> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             Container(
-                                width: 100,
-                                height: 80,
-                                alignment: Alignment.centerLeft,
-                                child: Text(index.toString() +". " +snapshot.data[index].country)),
-                            Container(
-                                width: 100,
-                                height: 80,
-                                alignment: Alignment.centerLeft,
-                                child: Text((snapshot.data[index].totalcases)
-                                    .toString())),
+                              width: 100,
+                              height: 80,
+                              alignment: Alignment.centerLeft,
+                              child: Text(index.toString() +
+                                  ". " +
+                                  snapshot.data[index].country),
+                            ),
                             Container(
                               width: 100,
-                                height: 80,
-                                alignment: Alignment.centerLeft,
-                              child: Text((snapshot.data[index].totalDeaths).toString())),
+                              height: 80,
+                              child: Center(
+                                child: Text((snapshot.data[index].totalcases)
+                                    .toString()),
+                              ),
+                              color: Colors.blue,
+                            ),
                             Container(
-                              child: Text((snapshot.data[index].totalRecovered)
-                                  .toString()),
+                              width: 100,
+                              height: 80,
+                              child: Center(
+                                child: Text((snapshot.data[index].totalDeaths)
+                                    .toString()),
+                              ),
+                              color: Colors.red,
+                            ),
+                            Expanded(
+                              child: Container(
+                                height: 80,
+                                child: Center(
+                                  child: Text(
+                                      (snapshot.data[index].totalRecovered)
+                                          .toString()),
+                                ),
+                                color: Colors.green,
+                              ),
                             ),
                           ],
                         ),
@@ -88,7 +107,6 @@ class _WorldState extends State<World> {
             },
           ),
         ),
-      ),
     );
   }
 }

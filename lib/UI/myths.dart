@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -29,20 +28,48 @@ class _MythsState extends State<Myths> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Myth"),
+        title: Text(
+          "Myth",
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.white,
+        centerTitle: true,
       ),
       body: pmyths == null
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : GridView.count(crossAxisCount: 1,
-          childAspectRatio: 4,
-          children: pmyths.data.map((tmyth)=>Card(
-            elevation: 3,
-            child: Text("${tmyth.myth}"),
-          )).toList(),
-          ),
+          : GridView.count(
+              crossAxisCount: 1,
+              childAspectRatio: 1.3,
+              children: pmyths.data
+                  .map((tmyth) => Hero(
+                        tag: tmyth.sId,
+                        child: Container(
+                          child: Card(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Text(
+                                  "Myth",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.red),
+                                ),
+                                Text("${tmyth.myth}"),
+                                Text(
+                                  "Reality",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.green),
+                                ),
+                                Text(tmyth.reality)
+                              ],
+                            ),
+                          ),
+                        ),
+                      ))
+                  .toList(),
+            ),
     );
   }
 }
