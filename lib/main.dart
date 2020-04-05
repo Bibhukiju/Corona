@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lastcorona/UI/frequent_QA.dart';
 import 'package:lastcorona/UI/hospitals.dart';
 import 'package:lastcorona/UI/myths.dart';
 import 'package:lastcorona/UI/world.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         'world': (context) => World(),
         'hospitals': (context) => Hospitals(),
         'myth buster': (context) => Myths(),
+        'faqs':(context)=>FAQs()
       },
     );
   }
@@ -47,7 +49,7 @@ class _DashBoardState extends State<DashBoard> {
               CircleAvatar(
                 backgroundImage: NetworkImage(imgl),
                 backgroundColor: Colors.white,
-                radius: MediaQuery.of(context).size.height*0.06,
+                radius: MediaQuery.of(context).size.height*0.06  ,
               ),
               Text(header)
             ],

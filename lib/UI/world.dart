@@ -55,51 +55,37 @@ class _WorldState extends State<World> {
                 return ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      title: Card(
-                        elevation: 4.0,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 80,
-                              alignment: Alignment.centerLeft,
-                              child: Text(index.toString() +
-                                  ". " +
-                                  snapshot.data[index].country),
-                            ),
-                            Container(
-                              width: 100,
-                              height: 80,
-                              child: Center(
-                                child: Text((snapshot.data[index].totalcases)
-                                    .toString()),
+                    return Container(
+                      alignment: Alignment.topLeft,
+                      child: ExpansionTile(
+                        title: Card(
+                          elevation: 2.0,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                width: 100,
+                                height: 50,
+                                child: Text(index.toString() +
+                                    ". " +
+                                    snapshot.data[index].country),
                               ),
-                              color: Colors.blue,
-                            ),
-                            Container(
-                              width: 100,
-                              height: 80,
-                              child: Center(
-                                child: Text((snapshot.data[index].totalDeaths)
-                                    .toString()),
-                              ),
-                              color: Colors.red,
-                            ),
-                            Expanded(
-                              child: Container(
-                                height: 80,
-                                child: Center(
-                                  child: Text(
-                                      (snapshot.data[index].totalRecovered)
-                                          .toString()),
-                                ),
-                                color: Colors.green,
-                              ),
-                            ),
-                          ],
+                           
+                            ],
+                          ),
                         ),
+                        
+                        children: <Widget>[
+                          Text("Deaths   " +(snapshot.data[index].totalDeaths).toString(),
+                          textAlign: TextAlign.left,
+                          ),
+                          Text("Total cases   " +(snapshot.data[index].totalcases).toString()),
+                          Text("Total Recovered   " +(snapshot.data[index].totalRecovered).toString()),
+                          Text("Active Cases   " +(snapshot.data[index].activeCases).toString()),
+                          
+                        ],
+                        
                       ),
                     );
                   },
