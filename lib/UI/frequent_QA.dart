@@ -26,58 +26,36 @@ class _FAQsState extends State<FAQs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "FAQs",
-          style: TextStyle(
-            color: Colors.black,
+        appBar: AppBar(
+          title: Text(
+            "FAQs(Freuently Ask Questions)",
+            style: TextStyle(
+              color: Colors.black,
+            ),
           ),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          centerTitle: true,
         ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      body: faqs == null
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : GridView.count(
-              crossAxisCount: 1,
-              children: faqs.data
-                  .map((f) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Expanded(
-                                child: Card(
-                              elevation: 2,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                mainAxisSize: MainAxisSize.max,
-                                children: <Widget>[
-                                  Text("Question",
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.italic,
-                                          color: Colors.red,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.w900)),
-                                  f.questionNp==null?Text(f.question):Text(f.questionNp),
-                                  Text("Answer",
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.italic,
-                                          color: Colors.green,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.w900)),
-                                  f.answerNp==null?Text(f.answer):Text(f.answerNp,
-                                  overflow: TextOverflow.ellipsis,
-                                  )
-                                ],
-                              ),
+        body: faqs == null
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: faqs.data
+                      .map((f) => Card(
+                            child: ExpansionTile(
+                              title: f.questionNp==null?Text(f.question):Text(f.questionNp),
+                              children: <Widget>[
+                                f.answerNp==null?Text(f.answer):Text(f.answerNp )
+                              ],
                             ),
-                      ),
-                    ],
-                  ))
-                  .toList()),
-    );
+                          ))
+                      .toList(),
+                ),
+              ));
   }
 }
 
