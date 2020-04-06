@@ -1,6 +1,6 @@
 # Corona App
 
-A new Flutter project.
+A new Flutter project for corona live tracking in nepal and world using json data
 
 ## Getting Started
 
