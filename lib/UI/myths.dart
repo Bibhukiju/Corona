@@ -27,50 +27,56 @@ class _MythsState extends State<Myths> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Myth",
-          style: TextStyle(color: Colors.black),
+        appBar: AppBar(
+          title: Text(
+            "Myth",
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.white,
+          centerTitle: true,
         ),
-        backgroundColor: Colors.white,
-        centerTitle: true,
-      ),
-      body: pmyths == null
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : GridView.count(
-              crossAxisCount: 1,
-              childAspectRatio: 1.3,
-              children: pmyths.data
-                  .map((tmyth) => Hero(
-                        tag: tmyth.sId,
-                        child: Container(
-                          child: Card(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        body: pmyths == null
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: pmyths.data
+                      .map((f) => ExpansionTile(
+                            title: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: <Widget>[
-                                Text(
-                                  "Myth",
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.red),
+                                Text("Myth"),
+                                Card(
+                                  child: f.mythNp == null
+                                      ? Container(margin: EdgeInsets.all(10),
+                                        child: Text(f.myth))
+                                      : Container(
+                                        padding: EdgeInsets.all(10),
+                                        child: Text(f.mythNp)),
                                 ),
-                                Text("${tmyth.myth}"),
-                                Text(
-                                  "Reality",
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.green),
-                                ),
-                                Text(tmyth.reality)
                               ],
                             ),
-                          ),
-                        ),
-                      ))
-                  .toList(),
-            ),
-    );
+                            children: <Widget>[
+                              Text("Reality",
+                              style: TextStyle(color: Colors.green,
+                              fontSize: 20
+                              ),
+                              ),
+                              f.realityNp == null
+                                  ? Container(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text(f.reality))
+                                  : Container(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text(f.realityNp,
+                                    ))
+                            ],
+                          ))
+                      .toList(),
+                ),
+              ));
   }
 }
 
