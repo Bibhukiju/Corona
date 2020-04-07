@@ -75,7 +75,7 @@ class _HospitalsState extends State<Hospitals> {
                                   ),
                                   Text("full: " + (datas.isFull.toString())+"\n"),
                                   Text("Contact person : " +
-                                      datas.contactPerson +"\n"),
+                                      datas.contactPerson ),
                                   Text("Phone :  " + datas.phone),
                                   
                                 ],

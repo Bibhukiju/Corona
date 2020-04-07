@@ -39,11 +39,13 @@ class _WorldState extends State<World> {
           "World data",
           style: TextStyle(color: Colors.black),
         ),
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
       body: Container(
         child: FutureBuilder(
+
           future: _getDatas(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
@@ -60,14 +62,16 @@ class _WorldState extends State<World> {
                     return SizedBox();
                   }
                   return Container(
-                    alignment: Alignment.topLeft,
                     child: ExpansionTile(
-                      
-                      title: Card(
-                        elevation: 2.0,
-                        child: Container(
-                          padding: EdgeInsets.all(10),
-                          child: Text( snapshot.data[index].country),
+                      title: Container(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          index == 0
+                              ? snapshot.data[index].country
+                              : (index - 1).toString() +
+                                  " " +
+                                  snapshot.data[index].country,
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
                       children: <Widget>[

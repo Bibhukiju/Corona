@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Aboutus extends StatefulWidget {
   @override
@@ -8,43 +9,43 @@ class Aboutus extends StatefulWidget {
 class _AboutusState extends State<Aboutus> {
   List<Person> person = [
     Person(
-        "Bibhu kiju",
-        "https://www.shareicon.net/data/2016/01/24/708382_people_512x512.png",
-        "Bibhukiju@gmail.com",
+        "Bibhu Kiju",
+        "https://avatars3.githubusercontent.com/u/46820449?s=400&u=8b8e8e6335520fd97c60c3b42ba543f94cfbfd8c&v=4",
+        "bibhukiju@gmail.com",
         "9863849224",
         "https://github.com/bibhukiju",
-        "Suryabinayak"),
+        "Suryabinayak,Bhaktapur"),
     Person(
         "Ram jonchhen",
-        "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/profile/photos/45095995/original/user_avatar_account_profile_code_developer_software-512.png",
+        "https://avatars0.githubusercontent.com/u/46254432?s=460&u=cc1818c2d59a6902b7da5b307b49135c55075558&v=4",
         "ramjonchhhen@gmail.com",
         "984100000000",
         "https://github.com/ramjonchhen",
         "Suryabinayak"),
     Person(
         "Naarayan Shrestha",
-        "https://image.freepik.com/free-vector/software-language-programmer-avatar_24877-763.jpg",
+        "https://scontent.fktm7-1.fna.fbcdn.net/v/t1.0-9/36298425_140419826844087_5923158968070307840_o.jpg?_nc_cat=106&_nc_sid=09cbfe&_nc_ohc=EGl-zo1ZcdoAX_hPUet&_nc_ht=scontent.fktm7-1.fna&oh=147bed97e3ecc51170b7232ebbf5abc6&oe=5EB21D7F",
         "naaraayen@gmail.com",
         "9864590611",
         "https://github.com/Narayan0611",
         "Mugitar,RameChhap"),
     Person(
-        "Bimal Shreatha",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQS6Gf3dKOi0F63vBdhwt8ttxuuVX6s44oXPeyRuQVxhHFZMrdi&usqp=CAU",
+        "Bimal Shrestha",
+        "https://avatars3.githubusercontent.com/u/60249948?s=400&u=9953ed33aff99e3cfd0014d34a80ad109589a31e&v=4",
         "sayresthabimal@gmail.com",
         "9861165844",
         "https://github.com/bimalstha",
         "kamalbinayak, Bhaktapur"),
     Person(
         "Nabin Bhandari",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-WM-2ZK0wd96DnEDzKFBbUUUBjcUYp85y4d0DHSscpAAbhEA_&usqp=CAU",
+        "https://avatars2.githubusercontent.com/u/46418794?s=460&u=f1b2a6b21f7fcfd35d7df6e8032cf3816d0f97d2&v=4",
         "nfornabin@gmail.com",
         "9812870775",
         "https://github.com/Nabiin",
         "Dang,Nepal"),
-        Person(
+    Person(
         "Laxman Jonchhen",
-        "https://pickaface.net/gallery/avatar/Eminero5439f53ce66cd.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Question_Mark.svg/1200px-Question_Mark.svg.png",
         "laxmanJonchhen@gmail.com",
         "9813551270",
         "https://github.com/LaxmanJonchhen12",
@@ -75,6 +76,10 @@ class _AboutusState extends State<Aboutus> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Text(
+                "Contributers",
+                textAlign: TextAlign.center,
+              ),
               Expanded(
                 flex: 1,
                 child: Padding(
@@ -97,8 +102,9 @@ class _AboutusState extends State<Aboutus> {
                   child: CircleAvatar(
                     radius: MediaQuery.of(context).size.height * .1,
                     backgroundColor: Colors.white,
-                    backgroundImage: NetworkImage(
-                        selectedPerson != null ? selectedPerson.imageUrl : "h"),
+                    backgroundImage: NetworkImage(selectedPerson != null
+                        ? selectedPerson.imageUrl
+                        : "https://avatars3.githubusercontent.com/u/46820449?s=400&u=8b8e8e6335520fd97c60c3b42ba543f94cfbfd8c&v=4"),
                   ),
                 ),
               ),
@@ -110,51 +116,97 @@ class _AboutusState extends State<Aboutus> {
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       color: Colors.grey.shade100,
                       elevation: 2,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: GridView.count(
+                          scrollDirection: Axis.horizontal,
+                          crossAxisCount: 1,
                           children: <Widget>[
-                            Text(
-                              "Name:  " +
-                                  (selectedPerson != null
-                                      ? selectedPerson.name
-                                      :"Bibhu kiju"),
-                              style: TextStyle(fontSize: 17),
-                            ),
-                            Text(
-                              "Email: " +
-                                  (selectedPerson != null
-                                      ? selectedPerson.email
-                                      : ""),
-                              style: TextStyle(fontSize: 17),
-                            ),
-                            Text(
-                              "Github: " +
-                                  (selectedPerson != null
-                                      ? selectedPerson.github
-                                      : ""),
-                              style: TextStyle(fontSize: 17),
-                            ),
-                            Text(
-                              "Address: " +
-                                  (selectedPerson != null
-                                      ? selectedPerson.address
-                                      : ""),
-                              style: TextStyle(fontSize: 17),
-                            ),
-                            Text(
-                              "Contact: " +
-                                  (selectedPerson != null
-                                      ? selectedPerson.contact
-                                      : ""),
-                              style: TextStyle(fontSize: 17),
-                            ),
+                            Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  Icon(Icons.person),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                    (selectedPerson != null
+                                        ? selectedPerson.name
+                                        : "Bibhu kiju"),
+                                    style: TextStyle(fontSize: 17),
+                                  ),
+                                  Expanded(child: SizedBox())
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Icon(MdiIcons.emailOutline),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                    (selectedPerson != null
+                                        ? selectedPerson.email
+                                        : "bibhuKiju@gmail.com"),
+                                    style: TextStyle(fontSize: 17),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Icon(MdiIcons.github),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      (selectedPerson != null
+                                          ? selectedPerson.github
+                                          : "https://github.com/bibhukiju"),
+                                      style: TextStyle(fontSize: 17),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Icon(MdiIcons.home),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                    (selectedPerson != null
+                                        ? selectedPerson.address
+                                        : "Suryabinayak,Bhaktapur"),
+                                    style: TextStyle(fontSize: 17),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Icon(MdiIcons.phone),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                    (selectedPerson != null
+                                        ? selectedPerson.contact
+                                        : "9863849224"),
+                                    style: TextStyle(fontSize: 17),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Center(child: Text("your Intro here"))
                           ],
                         ),
                       ),
