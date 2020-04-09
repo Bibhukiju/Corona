@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class World extends StatefulWidget {
   @override
@@ -35,6 +36,19 @@ class _WorldState extends State<World> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                MdiIcons.refresh,
+                color: Colors.black,
+              ),
+              onPressed: (){
+                setState(() {
+                  
+                });
+              },
+            )
+          ],
         title: Text(
           "World data",
           style: TextStyle(color: Colors.black),
@@ -45,7 +59,6 @@ class _WorldState extends State<World> {
       ),
       body: Container(
         child: FutureBuilder(
-
           future: _getDatas(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {

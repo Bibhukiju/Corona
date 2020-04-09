@@ -14,42 +14,50 @@ class _AboutusState extends State<Aboutus> {
         "bibhukiju@gmail.com",
         "9863849224",
         "https://github.com/bibhukiju",
-        "Suryabinayak,Bhaktapur"),
+        "Suryabinayak,Bhaktapur",
+        "i am bibhu"),
     Person(
         "Ram jonchhen",
         "https://avatars0.githubusercontent.com/u/46254432?s=460&u=cc1818c2d59a6902b7da5b307b49135c55075558&v=4",
         "ramjonchhhen@gmail.com",
         "984100000000",
         "https://github.com/ramjonchhen",
-        "Suryabinayak"),
+        "Suryabinayak",
+        "i am ram"),
     Person(
         "Naarayan Shrestha",
         "https://scontent.fktm7-1.fna.fbcdn.net/v/t1.0-9/36298425_140419826844087_5923158968070307840_o.jpg?_nc_cat=106&_nc_sid=09cbfe&_nc_ohc=EGl-zo1ZcdoAX_hPUet&_nc_ht=scontent.fktm7-1.fna&oh=147bed97e3ecc51170b7232ebbf5abc6&oe=5EB21D7F",
         "naaraayen@gmail.com",
         "9864590611",
         "https://github.com/Narayan0611",
-        "Mugitar,RameChhap"),
+        "Mugitar,RameChhap",
+        "i am naarayan"),
     Person(
         "Bimal Shrestha",
         "https://avatars3.githubusercontent.com/u/60249948?s=400&u=9953ed33aff99e3cfd0014d34a80ad109589a31e&v=4",
         "sayresthabimal@gmail.com",
         "9861165844",
         "https://github.com/bimalstha",
-        "kamalbinayak, Bhaktapur"),
+        "kamalbinayak, Bhaktapur",
+        "I am Bimal"),
     Person(
         "Nabin Bhandari",
         "https://avatars2.githubusercontent.com/u/46418794?s=460&u=f1b2a6b21f7fcfd35d7df6e8032cf3816d0f97d2&v=4",
         "nfornabin@gmail.com",
         "9812870775",
         "https://github.com/Nabiin",
-        "Dang,Nepal"),
+        "Dang,Nepal",
+        "iam nabin"),
     Person(
         "Laxman Jonchhen",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Question_Mark.svg/1200px-Question_Mark.svg.png",
         "laxmanJonchhen@gmail.com",
         "9813551270",
         "https://github.com/LaxmanJonchhen12",
-        "Suryabinayak,Nepal")
+        "Suryabinayak,Nepal",
+        " i am lxaman"),
+    Person("Chetan budhathoki", "", "laxmanJonchhen@gmail.com", "9808700887",
+        "https://github.com/chetan-budhathoki", "kumaripatti, lalitpur", "")
   ];
   Person selectedPerson;
   List<DropdownMenuItem> generatedItems(List<Person> person) {
@@ -76,8 +84,11 @@ class _AboutusState extends State<Aboutus> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .06,
+              ),
               Text(
-                "Contributers",
+                "Contributors",
                 textAlign: TextAlign.center,
               ),
               Expanded(
@@ -123,90 +134,98 @@ class _AboutusState extends State<Aboutus> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GridView.count(
+                          primary: true,
+                          padding: EdgeInsets.all(10),
                           scrollDirection: Axis.horizontal,
                           crossAxisCount: 1,
                           children: <Widget>[
                             Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Icon(Icons.person),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    (selectedPerson != null
-                                        ? selectedPerson.name
-                                        : "Bibhu kiju"),
-                                    style: TextStyle(fontSize: 17),
-                                  ),
-                                  Expanded(child: SizedBox())
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Icon(MdiIcons.emailOutline),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    (selectedPerson != null
-                                        ? selectedPerson.email
-                                        : "bibhuKiju@gmail.com"),
-                                    style: TextStyle(fontSize: 17),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Icon(MdiIcons.github),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Expanded(
-                                    child: Text(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: <Widget>[
+                                    Icon(Icons.person),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
                                       (selectedPerson != null
-                                          ? selectedPerson.github
-                                          : "https://github.com/bibhukiju"),
+                                          ? selectedPerson.name
+                                          : "Bibhu kiju"),
                                       style: TextStyle(fontSize: 17),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Icon(MdiIcons.home),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    (selectedPerson != null
-                                        ? selectedPerson.address
-                                        : "Suryabinayak,Bhaktapur"),
-                                    style: TextStyle(fontSize: 17),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Icon(MdiIcons.phone),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    (selectedPerson != null
-                                        ? selectedPerson.contact
-                                        : "9863849224"),
-                                    style: TextStyle(fontSize: 17),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Center(child: Text("your Intro here"))
+                                    Expanded(child: SizedBox())
+                                  ],
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Icon(MdiIcons.emailOutline),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      (selectedPerson != null
+                                          ? selectedPerson.email
+                                          : "bibhuKiju@gmail.com"),
+                                      style: TextStyle(fontSize: 17),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Icon(MdiIcons.github),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        (selectedPerson != null
+                                            ? selectedPerson.github
+                                            : "https://github.com/bibhukiju"),
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Icon(MdiIcons.home),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      (selectedPerson != null
+                                          ? selectedPerson.address
+                                          : "Suryabinayak,Bhaktapur"),
+                                      style: TextStyle(fontSize: 17),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Icon(MdiIcons.phone),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      (selectedPerson != null
+                                          ? selectedPerson.contact
+                                          : "9863849224"),
+                                      style: TextStyle(fontSize: 17),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Center(child: Text(
+                                      (selectedPerson != null
+                                          ? selectedPerson.info
+                                          : person[0].info),
+                                      style: TextStyle(fontSize: 17),
+                                    ),)
                           ],
                         ),
                       ),
@@ -227,6 +246,7 @@ class Person {
   String contact;
   String github;
   String address;
+  String info;
   Person(this.name, this.imageUrl, this.email, this.contact, this.github,
-      this.address);
+      this.address, this.info);
 }

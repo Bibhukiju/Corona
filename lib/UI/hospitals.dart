@@ -69,15 +69,19 @@ class _HospitalsState extends State<Hospitals> {
                                       ),
                                     ],
                                   ),
-                                  Text("State: " + datas.state+"\n"),
+                                  Text("State: " + datas.state + "\n"),
                                   SizedBox(
                                     height: 4,
                                   ),
-                                  Text("full: " + (datas.isFull.toString())+"\n"),
+                                  Text("full: " +
+                                      (datas.isFull.toString()) +
+                                      "\n"),
                                   Text("Contact person : " +
-                                      datas.contactPerson ),
-                                  Text("Phone :  " + datas.phone),
-                                  
+                                      datas.contactPerson +
+                                      "\n"),
+                                  Text("Phone :  " + datas.phone + "\n"),
+                                  Text("Address:  " + datas.address+"\n"),
+                                  Text("websites: " +datas.website)
                                 ],
                               ),
                             ))
