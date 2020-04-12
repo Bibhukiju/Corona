@@ -1,137 +1,89 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
 class World extends StatefulWidget {
   @override
   _WorldState createState() => _WorldState();
 }
 
 class _WorldState extends State<World> {
-  Future<List<Datas>> _getDatas() async {
-    var data = await http.get("https://nepalcorona.info/api/v1/data/world");
-    var jsonData = json.decode(data.body);
-
-    List<Datas> datas = [];
-    for (var u in jsonData) {
-      Datas datum = Datas(
-          u["id"],
-          u["country"],
-          u["totalCases"],
-          u["newcases"],
-          u["totalDeaths"],
-          u["newDeaths"],
-          u["activeCases"],
-          u["totalRecovered"],
-          u["criticalCases"],
-          u["v"]);
-      datas.add(datum);
+  List countryList;
+  Future<String> _getWordlDAta() async {
+    var response = await http.get("https://brp.com.np/covid/country.php");
+    var getData = jsonDecode(response.body);
+    if (this.mounted) {
+      setState(() {
+        countryList = [getData];
+      });
     }
-    print(datas.length);
-    return datas;
+    return "hello";
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getWordlDAta();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                MdiIcons.refresh,
-                color: Colors.black,
-              ),
-              onPressed: (){
-                setState(() {
-                  
-                });
-              },
-            )
-          ],
-        title: Text(
-          "World data",
-          style: TextStyle(color: Colors.black),
-        ),
+        title: Text("World Data"),
         elevation: 0,
-        backgroundColor: Colors.white,
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.search,
+              ),
+              onPressed: () {
+                TextField();
+                _getWordlDAta();
+              })
+        ],
       ),
-      body: Container(
-        child: FutureBuilder(
-          future: _getDatas(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.data == null) {
-              return Container(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            } else
-              return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (BuildContext context, int index) {
-                  if (index == 1) {
-                    return SizedBox();
-                  }
-                  return Container(
-                    child: ExpansionTile(
-                      title: Container(
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          index == 0
-                              ? snapshot.data[index].country
-                              : (index - 1).toString() +
-                                  " " +
-                                  snapshot.data[index].country,
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      children: <Widget>[
-                        Text(
-                          "Deaths   " +
-                              (snapshot.data[index].totalDeaths).toString(),
-                          textAlign: TextAlign.left,
-                        ),
-                        Text("Total cases   " +
-                            (snapshot.data[index].totalcases).toString()),
-                        Text("Total Recovered   " +
-                            (snapshot.data[index].totalRecovered).toString()),
-                        Text("Active Cases   " +
-                            (snapshot.data[index].activeCases).toString()),
-                      ],
-                    ),
-                  );
-                },
-              );
-          },
+      body: ListView.builder(
+        shrinkWrap: true,
+        itemCount:
+            countryList == null ? 0 : countryList[0]["countries_stat"].length,
+        itemBuilder: (context, i) {
+          if (i == 0) {
+            i++;
+            return SizedBox();
+          }
+          return listItem(i);
+        },
+      ),
+    );
+  }
+
+  Widget listItem(int i) {
+    return Align(
+      child: Card(
+        child: ExpansionTile(
+          title: SizedBox(
+            height: 40,
+            child: Text(
+              i.toString() +
+                  " " +
+                  countryList[0]["countries_stat"][i]["country_name"],
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          children: <Widget>[
+            Text("TotalCases: " + countryList[0]["countries_stat"][i]["cases"]),
+            Text("Total recovered: " +
+                countryList[0]["countries_stat"][i]["total_recovered"]),
+            Text("Deaths: " + countryList[0]["countries_stat"][i]["deaths"]),
+            Text("Active Cases " +
+                countryList[0]["countries_stat"][i]["active_cases"]),
+            Text("Critical Cases " +
+                countryList[0]["countries_stat"][i]["serious_critical"])
+          ],
         ),
       ),
     );
   }
-}
-
-class Datas {
-  String id;
-  String country;
-  int totalcases;
-  int newcases;
-  int totalDeaths;
-  int newDeaths;
-  int activeCases;
-  int totalRecovered;
-  int criticalCases;
-  int v;
-
-  Datas(
-      this.id,
-      this.country,
-      this.totalcases,
-      this.newcases,
-      this.totalDeaths,
-      this.newDeaths,
-      this.activeCases,
-      this.totalRecovered,
-      this.criticalCases,
-      this.v);
 }

@@ -3,6 +3,7 @@ import 'package:lastcorona/UI/frequent_QA.dart';
 import 'package:lastcorona/UI/hospitals.dart';
 import 'package:lastcorona/UI/myths.dart';
 import 'package:lastcorona/UI/about.dart';
+import 'package:lastcorona/UI/news.dart';
 import 'package:lastcorona/UI/precautions.dart';
 import 'package:lastcorona/UI/symptoms.dart';
 import 'package:lastcorona/UI/world.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         'faqs': (context) => FAQs(),
         'precautions': (context) => PrecautionPage(),
         'symptoms': (context) => Symptoms(),
-        'about us': (context) => Aboutus()
+        'about us': (context) => NewsPage()
       },
       theme: ThemeData(primaryColor: Colors.white, primarySwatch: Colors.red),
     );
@@ -83,10 +84,10 @@ class _DashBoardState extends State<DashBoard> {
       body: SafeArea(
         child: GridView.count(
           crossAxisCount: 2,
-          childAspectRatio: 1.1,
+          childAspectRatio: 1,
           children: <Widget>[
             myContains('Nepal',
-                "http://img.freeflagicons.com/thumb/round_icon/nepal/nepal_640.png"),
+                "http://cn.flagbox.net/flags/rflags_1/np.png"),
             myContains("World",
                 "https://cdn5.vectorstock.com/i/1000x1000/65/04/planet-earth-cartoon-character-vector-1036504.jpg"),
             myContains('Symptoms',
@@ -96,9 +97,9 @@ class _DashBoardState extends State<DashBoard> {
             myContains('Hospitals',
                 "https://i.pinimg.com/236x/57/20/27/572027372cc8f769ee82ee8bff7dde42--illustration-kids-stock-illustrations.jpg?b=t"),
             myContains("Myth Buster",
-                "https://th.bing.com/th?id=OIP.h4pt0LdLbujLijQ1TR2_yQHaFj&pid=Api&rs=1"),
+                "https://www.1pezeshk.com/wp-content/uploads/2014/05/5-8-2014-4-57-19-PM.jpg"),
             myContains('FAQS',
-                "https://dhrm.utah.gov/wp-content/uploads/Furlough-FAQs-Image.jpg"),
+                "https://mickirose.files.wordpress.com/2015/04/faq-icon.jpg"),
             myContains('About us',
                 "https://avatars3.githubusercontent.com/u/8184686?s=460&v=4"),
           ],
