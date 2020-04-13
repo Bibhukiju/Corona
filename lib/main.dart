@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lastcorona/UI/frequent_QA.dart';
 import 'package:lastcorona/UI/hospitals.dart';
 import 'package:lastcorona/UI/myths.dart';
-import 'package:lastcorona/UI/about.dart';
 import 'package:lastcorona/UI/news.dart';
 import 'package:lastcorona/UI/precautions.dart';
 import 'package:lastcorona/UI/symptoms.dart';
